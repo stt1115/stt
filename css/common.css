@@ -1,0 +1,43 @@
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+a{text-decoration: none;}
+
+
+
+.top{width: 100%;height: 29px;background: #f5f5f5;border-bottom: 1px solid #e6e6e6;}
+.top a{color: #8a626b;}
+em{font-style: normal;}
+.center01{width: 1190px;margin: 0 auto;background: red;font-size: 12px;line-height: 29px;}
+.top span{color: #3469b7;}
+.nl{float: left;}
+.nl li{float: left;margin-left: 25px;}
+.nl li:first-child{margin-left: 0;}
+
+
+.nr{float: right;}
+.nr li{float: left;margin-left: 20px;}
+.nr li:first-child{margin-left: 0;}
+.nr li:nth-child(4){width: 70px;background: url(../img/lt.gif) no-repeat center right;}
+
+.nr li:nth-child(2),.nr li:nth-child(5),.nr li:nth-child(8){background: url(../img/xiala.gif) no-repeat right center;width: 61px;}
+.nr li:nth-child(5){width: 76px;padding-left: 13px;}
+.nr li:nth-child(5) img{margin-top: px;display: inline-block;margin-right: 5px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
