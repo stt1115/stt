@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,ul,li,p{
+				padding: 0;
+				margin: 0;
+			}
+			li{
+				list-style: none;
+			}
+			img{
+				display: block;
+				border: none;
+			}
+			#prodList li{
+				float: left;
+				width: 200px;
+				padding: 10px;
+				border: 1px solid #CECECE;
+				margin: 10px;
+			}
+			#prodList img{
+				width: 200px;
+				height: 200px;
+				
+			}
+			#prodList p{
+				margin: 10px;
+			}
+			#prodList input{
+				width: 120px;
+				height: 40px;
+				background: red;
+				color: white;
+				border: none;
+				cursor: pointer;
+			}
+			#num{
+				position: fixed;
+				right: 10px;
+				top: 10px;
+				border: 1px solid red;
+				font-size: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="prodList">
+
+		</ul>
+		<div id="num"><a href="cart.html">0</a></div>
+		<script src="../cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//1.存cookie
+			//2.存数据库
+			
+			//1.后台获取
+			//目前没有后台 模拟数据 自己写
+			//2.考虑数据结构
+			var data = [{
+				id:"10001",
+				imgSrc:"pic.jpg",
+				title:"童装",
+				price:"199"
+			},{
+				id:"10002",
+				imgSrc:"pic01.jpg",
+				title:"童装1",
+				price:"199"
+			},{
+				id:"10003",
+				imgSrc:"pic.jpg",
+				title:"童装2",
+				price:"199"
+			},{
+				id:"10004",
+				imgSrc:"pic01.jpg",
+				title:"童装3",
+				price:"199"
+			}];
+			
+			var oList = document.getElementById("prodList");
+			var oNum = document.getElementById("num");
+			var oLink = oNum.children[0];
+			
+			//通过数据生成结构
+			var str = "";
+			for(var i = 0; i < data.length; i++){
+				str += "<li><img src='"+data[i].imgSrc+"'><p>"+data[i].title+"</p><p>"+data[i].price+"</p><input type='button' class='addBtn' data-id='"+data[i].id+"' value='添加购物车'></li>"
+			}
+			oList.innerHTML = str;
+			//添加购物车
+			//存数据 存什么？？？
+			//cart {10001:5,10002:3}
+			
+			var aBtns = document.querySelectorAll(".addBtn");
+			if(getCookie("cart")){
+				var obj = JSON.parse(getCookie("cart"));
+				var num = 0;
+				for(var i in obj){
+					num+=obj[i];
+				}
+				oLink.innerHTML = num;
+					
+			}else{
+				var obj = {};
+			}
+			
+			for(var i = 0; i < aBtns.length; i++){
+				aBtns[i].onclick = function(){
+					var id = this.getAttribute("data-id");
+					if(obj[id]==undefined){
+						obj[id] = 1;
+					}else{
+						obj[id]++;
+					}
+					var num = 0;
+					for(var i in obj){
+						num+=obj[i];
+					}
+					oLink.innerHTML = num;
+					
+					//JSON.stringfiy() 将对象转换成json格式的字符串
+					//JSON.parse() 将json格式的字符串转成js对象
+					var objToStr = JSON.stringify(obj);
+					setCookie("cart",objToStr,7);
+				}
+			}
+		</script>
+	</body>
+</html>

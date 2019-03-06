@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,ul,li,p{
+				padding: 0;
+				margin: 0;
+			}
+			li{
+				list-style: none;
+			}
+			img{
+				display: block;
+				border: none;
+			}
+			#prodList li{
+				float: left;
+				width: 200px;
+				padding: 10px;
+				border: 1px solid #CECECE;
+				margin: 10px;
+			}
+			#prodList img{
+				width: 200px;
+				height: 200px;
+				
+			}
+			#prodList p{
+				margin: 10px;
+			}
+			#prodList input{
+				width: 120px;
+				height: 40px;
+				background: red;
+				color: white;
+				border: none;
+				cursor: pointer;
+			}
+			#num{
+				position: fixed;
+				right: 10px;
+				top: 10px;
+				border: 1px solid red;
+				font-size: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="cartList">
+
+		</ul>
+	
+		<script src="../cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*var data = [{
+				id:"10001",
+				imgSrc:"pic.jpg",
+				title:"童装",
+				price:"199"
+			},{
+				id:"10002",
+				imgSrc:"pic01.jpg",
+				title:"童装1",
+				price:"199"
+			},{
+				id:"10003",
+				imgSrc:"pic.jpg",
+				title:"童装2",
+				price:"199"
+			},{
+				id:"10004",
+				imgSrc:"pic01.jpg",
+				title:"童装3",
+				price:"199"
+			}];*/
+			/*var data = {
+				"10001":{
+					id:"10001",
+					title:"",
+					imgSrc:"",
+					price:""
+				},
+				"10002":{
+					id:"10001",
+					title:"",
+					imgSrc:"",
+					price:""
+				}
+			}*/
+			var oCartList = document.getElementById("cartList");
+			if(getCookie("cart")){
+				
+				var obj = JSON.parse(getCookie("cart"));
+				var str = "";
+				for(var id in obj){
+					for(var j = 0; j < data.length; j++){
+						if(id == data[j].id){
+							str += "<li><span>"+data[j].title+"</span><span>"+obj[id]+"</span></li>"
+						}
+					}
+				}
+				oCartList.innerHTML = str;
+				
+			}else{
+				
+				
+			}
+			
+		</script>
+	</body>
+</html>
